@@ -1,0 +1,40 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "prettier": "@ayloncarrijo/prettier-config",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@stitches/react": "^1.2.8",
+    "@types/node": "18.16.2",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.1",
+    "@vista-ui/core": "1.0.0-alpha.2",
+    "@vista-ui/react": "1.0.0-alpha.5",
+    "next": "13.3.1",
+    "next-themes": "^0.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@ayloncarrijo/eslint-config": "^2.0.0",
+    "@ayloncarrijo/prettier-config": "^1.0.2",
+    "@ayloncarrijo/typescript-config": "^3.0.0",
+    "@svgr/webpack": "^7.0.0",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.39.0",
+    "eslint-config-next": "^13.3.1"
+  }
+}
