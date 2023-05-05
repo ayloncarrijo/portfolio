@@ -19,7 +19,7 @@ const roboto = Roboto({
 });
 
 const colorSchemes = createColorSchemes({
-  primary: "#000",
+  primary: "#40627B",
 });
 
 const baseTheme = {

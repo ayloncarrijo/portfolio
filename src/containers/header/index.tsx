@@ -1,6 +1,6 @@
 import { GithubButton } from "@/components/github-button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
-import Logo from "@public/logo.svg";
+import Logo from "@public/images/logo.svg";
 import { styled } from "@vista-ui/core";
 import {
   Box,
