@@ -1,3 +1,4 @@
+import { About } from "@/containers/about";
 import { Banner } from "@/containers/banner";
 import { Header } from "@/containers/header";
 import Head from "next/head";
@@ -13,6 +14,7 @@ export default function Home(): JSX.Element {
       <Header />
       <main>
         <Banner />
+        <About />
       </main>
     </>
   );

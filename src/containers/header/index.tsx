@@ -1,4 +1,4 @@
-import { GithubButton } from "@/components/github-button";
+import { SocialMedia } from "@/components/social-media";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Logo from "@public/images/logo.svg";
 import { styled } from "@vista-ui/core";
@@ -76,7 +76,7 @@ export const Header = (): JSX.Element => (
               css={{ display: "flex", justifyContent: "center", gap: "$8 " }}
             >
               <ThemeSwitcher variant="outlined" />
-              <GithubButton variant="outlined" />
+              <SocialMedia variant="outlined" type="github" />
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
@@ -105,7 +105,7 @@ export const Header = (): JSX.Element => (
           css={{ width: 1, height: "$20", backgroundColor: "$outlineVariant" }}
         />
         <ThemeSwitcher offset />
-        <GithubButton offset />
+        <SocialMedia type="github" offset />
       </Box>
     </Container>
   </header>

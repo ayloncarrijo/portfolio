@@ -9,34 +9,35 @@ import React from "react";
 
 export type ThemeSwitcherProps = React.ComponentProps<typeof ThemeSwitcher>;
 
-export const ThemeSwitcher = forwardRef<
-  Optional<IconButtonRootProps, "label">,
-  "button"
->((props, ref) => {
-  const [isClient, setIsClient] = React.useState(false);
+export type ThemeSwitcherRootProps = Optional<IconButtonRootProps, "label">;
 
-  const { resolvedTheme, setTheme } = useTheme();
+export const ThemeSwitcher = forwardRef<ThemeSwitcherRootProps, "button">(
+  (props, ref) => {
+    const [isClient, setIsClient] = React.useState(false);
 
-  const isDarkMode = resolvedTheme === "dark";
+    const { resolvedTheme, setTheme } = useTheme();
 
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
+    const isDarkMode = resolvedTheme === "dark";
 
-  if (!isClient) {
-    return <IconButton label="Placeholder" {...props} />;
+    React.useEffect(() => {
+      setIsClient(true);
+    }, []);
+
+    if (!isClient) {
+      return <IconButton label="Placeholder" {...props} />;
+    }
+
+    return (
+      <IconButton
+        ref={ref}
+        label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
+        onClick={() => {
+          setTheme(isDarkMode ? "light" : "dark");
+        }}
+        {...props}
+      >
+        {isDarkMode ? "light_mode" : "dark_mode"}
+      </IconButton>
+    );
   }
-
-  return (
-    <IconButton
-      ref={ref}
-      label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
-      onClick={() => {
-        setTheme(isDarkMode ? "light" : "dark");
-      }}
-      {...props}
-    >
-      {isDarkMode ? "light_mode" : "dark_mode"}
-    </IconButton>
-  );
-});
+);

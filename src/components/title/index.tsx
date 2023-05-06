@@ -1,6 +1,8 @@
 import { styled } from "@vista-ui/core";
 
-export const Display = styled("h2", {
+export type TitleProps = React.ComponentProps<typeof Title>;
+
+export const Title = styled("h3", {
   typography: "$headlineSm",
   "@md": {
     typography: "$displaySm",

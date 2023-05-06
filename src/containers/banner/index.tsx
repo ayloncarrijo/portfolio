@@ -1,5 +1,5 @@
-import { Body } from "@/components/body";
-import { Display } from "@/components/display";
+import { Title } from "@/components/title";
+import { Paragraph } from "@/components/paragraph";
 import { Section } from "@/components/section";
 import Code from "@public/images/code.svg";
 import { AspectRatio, Box, Button, Container, Grid } from "@vista-ui/react";
@@ -20,14 +20,14 @@ export const Banner = (): JSX.Element => {
               },
             }}
           >
-            <Display css={{ mb: "$8" }}>
+            <Title css={{ mb: "$8" }}>
               Olá! 👋 <br />
               Me chamo{" "}
               <Box as="span" css={{ color: "$primary" }}>
                 Aylon Carrijo
               </Box>
-            </Display>
-            <Body css={{ color: "$onSurfaceVariant", mb: "$32" }}>
+            </Title>
+            <Paragraph css={{ color: "$onSurfaceVariant", mb: "$32" }}>
               Sou um{" "}
               <Box as="span" css={{ color: "$primary" }}>
                 desenvolvedor front-end
@@ -37,7 +37,7 @@ export const Banner = (): JSX.Element => {
                 UI designer
               </Box>{" "}
               muito dedicado e apaixonado pela minha profissão.
-            </Body>
+            </Paragraph>
             <Box css={{ display: "flex", gap: "$8" }}>
               <Button>Projetos</Button>
               <Button variant="outlined">Contato</Button>
@@ -62,7 +62,7 @@ export const Banner = (): JSX.Element => {
                   height: "100%",
                   borderRadius: "$lg",
                   background:
-                    "linear-gradient(90deg , $primary , $onPrimaryContainer)",
+                    "linear-gradient(45deg , $onPrimaryContainer , $secondary)",
                 }}
               />
               <Box
