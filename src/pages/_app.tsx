@@ -6,16 +6,23 @@ import {
 import { GlobalProvider } from "@vista-ui/react";
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
-import { Roboto } from "next/font/google";
 import localFont from "next/font/local";
 
 const materialSymbols = localFont({
-  src: "../../public/fonts/material-symbols.woff2",
+  src: "../../public/fonts/Material-Symbols.woff2",
 });
 
-const roboto = Roboto({
-  weight: ["400", "500"],
-  subsets: ["latin"],
+const roboto = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Roboto-Regular.woff2",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/Roboto-Medium.woff2",
+      weight: "500",
+    },
+  ],
 });
 
 const colorSchemes = createColorSchemes({

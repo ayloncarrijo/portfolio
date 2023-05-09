@@ -1,6 +1,9 @@
 import { About } from "@/containers/about";
 import { Banner } from "@/containers/banner";
+import { Contact } from "@/containers/contact";
 import { Header } from "@/containers/header";
+import { Projects } from "@/containers/projects";
+import { Skills } from "@/containers/skills";
 import Head from "next/head";
 
 export default function Home(): JSX.Element {
@@ -15,6 +18,9 @@ export default function Home(): JSX.Element {
       <main>
         <Banner />
         <About />
+        <Skills />
+        <Projects />
+        <Contact />
       </main>
     </>
   );

@@ -9,6 +9,7 @@ const StyledRoot = styled(Title, {
   display: "flex",
   flexDirection: "column",
   gap: "$8",
+  mb: "$48",
 });
 
 export const SectionTitle = forwardRef<unknown, "h3">(
