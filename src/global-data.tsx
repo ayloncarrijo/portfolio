@@ -32,6 +32,13 @@ export const globalData = {
       url: "http://localhost:3000",
     },
   ],
+  sections: [
+    { href: "#", title: "Início" },
+    { href: "#about", title: "Sobre" },
+    { href: "#skills", title: "Habilidades" },
+    { href: "#projects", title: "Projetos" },
+    { href: "#contact", title: "Contato" },
+  ],
   socialMedia: {
     instagram: {
       label: "Instagram",

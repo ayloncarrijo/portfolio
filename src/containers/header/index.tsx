@@ -1,5 +1,6 @@
 import { SocialMedia } from "@/components/social-media";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import { globalData } from "@/global-data";
 import Logo from "@public/images/logo.svg";
 import { styled } from "@vista-ui/core";
 import {
@@ -14,6 +15,7 @@ import {
   DrawerTrigger,
   IconButton,
 } from "@vista-ui/react";
+import React from "react";
 
 const StyledLink = styled("a", {
   m: "-$16",
@@ -28,85 +30,119 @@ const StyledLink = styled("a", {
   },
 });
 
-const sections = [
-  { href: "#", title: "Início" },
-  { href: "#about", title: "Sobre" },
-  { href: "#skills", title: "Habilidades" },
-  { href: "#projects", title: "Projetos" },
-  { href: "#contact", title: "Contato" },
-];
+export const Header = (): JSX.Element => {
+  const [isCollapsed, setIsCollapsed] = React.useState(false);
 
-export const Header = (): JSX.Element => (
-  <header>
-    <Container
+  const [isOnTop, setIsOnTop] = React.useState(true);
+
+  const prevScrollY = React.useRef(0);
+
+  React.useEffect(() => {
+    const hideOrShowHeader = (): void => {
+      const isOnTop = window.scrollY <= 32;
+
+      setIsCollapsed(!isOnTop && window.scrollY > prevScrollY.current);
+      setIsOnTop(isOnTop);
+
+      prevScrollY.current = window.scrollY;
+    };
+
+    hideOrShowHeader();
+
+    window.addEventListener("scroll", hideOrShowHeader);
+
+    return () => {
+      window.removeEventListener("scroll", hideOrShowHeader);
+    };
+  }, []);
+
+  return (
+    <Box
+      as="header"
       css={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        py: "$16",
+        zIndex: "$50",
+        position: "sticky",
+        top: 0,
+        translate: isCollapsed ? "0 -100%" : "0 0",
+        backgroundColor:
+          isCollapsed || isOnTop ? "transparent" : "$surfaceContainerLow",
+        boxShadow: isCollapsed || isOnTop ? "none" : "$elevation1",
+        transition:
+          "translate $easeOut, background-color $easeOut, box-shadow $easeOut",
       }}
     >
-      <Logo />
-
-      <Box
+      <Container
         css={{
-          "@md": {
-            display: "none",
-          },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          py: "$16",
         }}
       >
-        <Drawer>
-          <DrawerTrigger asChild>
-            <IconButton label="Abrir menu" offset>
-              menu
-            </IconButton>
-          </DrawerTrigger>
-          <DrawerContent>
-            <DrawerHeader>
-              <Logo />
-            </DrawerHeader>
-            <DrawerBody>
-              {sections.map((section) => (
-                <DrawerItem key={section.href} href={section.href}>
-                  {section.title}
-                </DrawerItem>
-              ))}
-            </DrawerBody>
-            <DrawerFooter
-              css={{ display: "flex", justifyContent: "center", gap: "$8 " }}
-            >
-              <ThemeSwitcher variant="outlined" />
-              <SocialMedia variant="outlined" type="github" />
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </Box>
-
-      <Box
-        css={{
-          display: "none",
-          "@md": {
-            display: "flex",
-            alignItems: "center",
-            gap: "$24",
-          },
-        }}
-      >
-        <nav>
-          <Box as="ul" css={{ display: "flex", gap: "$32" }}>
-            {sections.map((section) => (
-              <li key={section.href}>
-                <StyledLink href={section.href}>{section.title}</StyledLink>
-              </li>
-            ))}
-          </Box>
-        </nav>
+        <Logo />
         <Box
-          css={{ width: 1, height: "$20", backgroundColor: "$outlineVariant" }}
-        />
-        <ThemeSwitcher offset />
-        <SocialMedia type="github" offset />
-      </Box>
-    </Container>
-  </header>
-);
+          css={{
+            "@md": {
+              display: "none",
+            },
+          }}
+        >
+          <Drawer>
+            <DrawerTrigger asChild>
+              <IconButton label="Abrir menu" offset>
+                menu
+              </IconButton>
+            </DrawerTrigger>
+            <DrawerContent>
+              <DrawerHeader>
+                <Logo />
+              </DrawerHeader>
+              <DrawerBody>
+                {globalData.sections.map((section) => (
+                  <DrawerItem key={section.href} href={section.href}>
+                    {section.title}
+                  </DrawerItem>
+                ))}
+              </DrawerBody>
+              <DrawerFooter
+                css={{ display: "flex", justifyContent: "center", gap: "$8 " }}
+              >
+                <ThemeSwitcher variant="outlined" />
+                <SocialMedia variant="outlined" type="github" />
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+        </Box>
+        <Box
+          css={{
+            display: "none",
+            "@md": {
+              display: "flex",
+              alignItems: "center",
+              gap: "$24",
+            },
+          }}
+        >
+          <nav>
+            <Box as="ul" css={{ display: "flex", gap: "$32" }}>
+              {globalData.sections.map((section) => (
+                <li key={section.href}>
+                  <StyledLink href={section.href}>{section.title}</StyledLink>
+                </li>
+              ))}
+            </Box>
+          </nav>
+          <Box
+            css={{
+              width: 1,
+              height: "$20",
+              backgroundColor: "$outlineVariant",
+            }}
+          />
+          <ThemeSwitcher offset />
+          <SocialMedia type="github" offset />
+        </Box>
+      </Container>
+    </Box>
+  );
+};
