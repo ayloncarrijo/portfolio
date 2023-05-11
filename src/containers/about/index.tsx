@@ -1,9 +1,15 @@
 import { Image } from "@/components/image";
-import { Paragraph } from "@/components/paragraph";
 import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { SocialMedia } from "@/components/social-media";
-import { AspectRatio, Box, Container, Divider, Grid } from "@vista-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Text,
+} from "@vista-ui/react";
 
 export const About = (): JSX.Element => {
   const socialMedia = (
@@ -91,7 +97,7 @@ export const About = (): JSX.Element => {
                 },
               }}
             >
-              <Paragraph>{description}</Paragraph>
+              <p>{description}</p>
               <Divider css={{ my: "$32", width: "$224" }} />
               <Box css={{ display: "flex", gap: "$24" }}>{socialMedia}</Box>
               <Box
@@ -142,7 +148,7 @@ export const About = (): JSX.Element => {
               <AspectRatio ratio={1 / 1}>{photo}</AspectRatio>
             </Box>
           </Box>
-          <Paragraph
+          <Text
             css={{
               p: "$16",
               borderRadius: "0 0 $lg $lg",
@@ -150,7 +156,7 @@ export const About = (): JSX.Element => {
             }}
           >
             {description}
-          </Paragraph>
+          </Text>
           <Divider css={{ my: "$32" }} />
           <Box css={{ display: "flex", justifyContent: "center", gap: "$24" }}>
             {socialMedia}

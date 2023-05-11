@@ -1,8 +1,14 @@
-import { Title } from "@/components/title";
-import { Paragraph } from "@/components/paragraph";
 import { Section } from "@/components/section";
+import { Title } from "@/components/title";
 import Code from "@public/images/code.svg";
-import { AspectRatio, Box, Button, Container, Grid } from "@vista-ui/react";
+import {
+  AspectRatio,
+  Box,
+  Button,
+  Container,
+  Grid,
+  Text,
+} from "@vista-ui/react";
 
 export const Banner = (): JSX.Element => {
   return (
@@ -27,7 +33,7 @@ export const Banner = (): JSX.Element => {
                 Aylon Carrijo
               </Box>
             </Title>
-            <Paragraph css={{ color: "$onSurfaceVariant", mb: "$32" }}>
+            <Text css={{ color: "$onSurfaceVariant", mb: "$32" }}>
               Sou um{" "}
               <Box as="span" css={{ color: "$primary" }}>
                 desenvolvedor front-end
@@ -37,10 +43,14 @@ export const Banner = (): JSX.Element => {
                 UI designer
               </Box>{" "}
               muito dedicado e apaixonado pela minha profissão.
-            </Paragraph>
+            </Text>
             <Box css={{ display: "flex", gap: "$8" }}>
-              <Button>Projetos</Button>
-              <Button variant="outlined">Contato</Button>
+              <Button as="a" href="#projects">
+                Projetos
+              </Button>
+              <Button as="a" href="#contact" variant="outlined">
+                Contato
+              </Button>
             </Box>
           </Box>
           <Box

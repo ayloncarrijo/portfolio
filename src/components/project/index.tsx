@@ -1,5 +1,4 @@
 import { Image } from "@/components/image";
-import { Paragraph } from "@/components/paragraph";
 import Github from "@public/icons/github.svg";
 import {
   AspectRatio,
@@ -108,7 +107,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
     );
 
     const descriptionJsx = (
-      <Paragraph
+      <Text
         css={{
           p: "$16",
           backgroundColor: "$surfaceContainer",
@@ -120,7 +119,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
         }}
       >
         {description}
-      </Paragraph>
+      </Text>
     );
 
     return (

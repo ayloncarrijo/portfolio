@@ -17,11 +17,11 @@ dependencies:
     specifier: 18.2.1
     version: 18.2.1
   '@vista-ui/core':
-    specifier: 1.0.0-alpha.4
-    version: 1.0.0-alpha.4(@stitches/react@1.3.1-1)
+    specifier: 1.0.0-alpha.5
+    version: 1.0.0-alpha.5(@stitches/react@1.3.1-1)
   '@vista-ui/react':
-    specifier: 1.0.0-alpha.9
-    version: 1.0.0-alpha.9(@types/react@18.2.0)(@vista-ui/core@1.0.0-alpha.4)(react-dom@18.2.0)(react@18.2.0)
+    specifier: 1.0.0-alpha.12
+    version: 1.0.0-alpha.12(@types/react@18.2.0)(@vista-ui/core@1.0.0-alpha.5)(react-dom@18.2.0)(react@18.2.0)
   next:
     specifier: 13.3.1
     version: 13.3.1(@babel/core@7.21.5)(react-dom@18.2.0)(react@18.2.0)
@@ -2482,8 +2482,8 @@ packages:
       eslint-visitor-keys: 3.4.0
     dev: true
 
-  /@vista-ui/core@1.0.0-alpha.4(@stitches/react@1.3.1-1):
-    resolution: {integrity: sha512-eh8oh4gWHVZ3SzQyXZo7hpzEwXjc//ddUpBYtgFukSsw1o4cpbGKX/ZnpofHdgsiRmqSodbCPETiH5eCNnOXZQ==}
+  /@vista-ui/core@1.0.0-alpha.5(@stitches/react@1.3.1-1):
+    resolution: {integrity: sha512-TsU6LHcbDSD9b/dHCvA3Xbxr1FKtwfU0N0G3JGytVk1cI+vsAB8naFy5BolQuPT/11LYMgIYYJr0TCCzOkm4Ow==}
     peerDependencies:
       '@stitches/react': 1.3.1-1
     dependencies:
@@ -2492,10 +2492,10 @@ packages:
       '@stitches/react': 1.3.1-1(react@18.2.0)
     dev: false
 
-  /@vista-ui/react@1.0.0-alpha.9(@types/react@18.2.0)(@vista-ui/core@1.0.0-alpha.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-ksaZIeZESlCTx3/2pq0AJ0SczZeEUQ7CujY2lonr3P71t7VEOF1tnY5alU45Z3WFbzTbG3NPzwp7Nt0mURyUSg==}
+  /@vista-ui/react@1.0.0-alpha.12(@types/react@18.2.0)(@vista-ui/core@1.0.0-alpha.5)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-fX30pkDjFa/U/pYp7cCYBJEwYqAHqWVsnKVsrDzAiSWKFoW2FKk/z7rFJQv6RMJr5ugkJlpXnJ5caBmtpjwOYQ==}
     peerDependencies:
-      '@vista-ui/core': 1.0.0-alpha.4
+      '@vista-ui/core': 1.0.0-alpha.5
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
@@ -2508,7 +2508,7 @@ packages:
       '@radix-ui/react-switch': 1.0.2(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-toast': 1.1.3(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-tooltip': 1.0.5(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
-      '@vista-ui/core': 1.0.0-alpha.4(@stitches/react@1.3.1-1)
+      '@vista-ui/core': 1.0.0-alpha.5(@stitches/react@1.3.1-1)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
