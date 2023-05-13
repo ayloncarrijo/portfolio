@@ -2,12 +2,75 @@ import { ContactItem } from "@/components/contact-item";
 import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { globalData } from "@/global-data";
+import { yupResolver } from "@hookform/resolvers/yup";
 import Conversation from "@public/images/conversation.svg";
-import { Box, Button, Container, Text, TextInput } from "@vista-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Text,
+  TextInput,
+  Toast,
+} from "@vista-ui/react";
+import axios from "axios";
+import React from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+
+type FieldValues = {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+};
+
+const validationSchema = yup.object({
+  name: yup.string().required(),
+  email: yup.string().required().email(),
+  subject: yup.string().required(),
+  message: yup.string().required(),
+});
 
 export const Contact = (): JSX.Element => {
+  const [isSuccessToastOpen, setIsSuccessToastOpen] = React.useState(false);
+
+  const [isErrorToastOpen, setIsErrorToastOpen] = React.useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm<FieldValues>({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const submit = async (data: FieldValues): Promise<void> => {
+    setIsSuccessToastOpen(false);
+    setIsErrorToastOpen(false);
+
+    await axios
+      .post("/api/send-email", data)
+      .then(() => {
+        setIsSuccessToastOpen(true);
+      })
+      .catch(() => {
+        setIsErrorToastOpen(true);
+      });
+  };
+
   return (
     <Section id="contact">
+      <Toast
+        open={isSuccessToastOpen}
+        onOpenChange={setIsSuccessToastOpen}
+        message="A sua mensagem foi enviada com sucesso!"
+      />
+      <Toast
+        open={isErrorToastOpen}
+        onOpenChange={setIsErrorToastOpen}
+        message="Algo deu errado. Por favor, tente novamente."
+      />
+
       <Container>
         <SectionTitle>Contato</SectionTitle>
         <Box
@@ -96,6 +159,10 @@ export const Contact = (): JSX.Element => {
                 flex: 1,
               },
             }}
+            onSubmit={(event) => {
+              void handleSubmit(submit)(event);
+            }}
+            noValidate
           >
             <Box
               css={{
@@ -107,10 +174,29 @@ export const Contact = (): JSX.Element => {
                 },
               }}
             >
-              <TextInput id="name" label="Nome" />
-              <TextInput id="email" label="E-mail" type="email" />
+              <TextInput
+                id="name"
+                label="Nome"
+                error={errors.name?.message}
+                disabled={isSubmitting}
+                {...register("name")}
+              />
+              <TextInput
+                id="email"
+                label="E-mail"
+                type="email"
+                error={errors.email?.message}
+                disabled={isSubmitting}
+                {...register("email")}
+              />
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <TextInput id="subject" label="Assunto" />
+                <TextInput
+                  id="subject"
+                  label="Assunto"
+                  error={errors.subject?.message}
+                  disabled={isSubmitting}
+                  {...register("subject")}
+                />
               </Box>
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
                 <TextInput
@@ -118,11 +204,14 @@ export const Contact = (): JSX.Element => {
                   label="Mensagem"
                   as="textarea"
                   rows={8}
+                  error={errors.message?.message}
+                  disabled={isSubmitting}
+                  {...register("message")}
                 />
               </Box>
             </Box>
             <Box css={{ mt: "$8", display: "flex", justifyContent: "end" }}>
-              <Button type="submit" startIcon="send">
+              <Button type="submit" startIcon="send" loading={isSubmitting}>
                 Enviar mensagem
               </Button>
             </Box>
