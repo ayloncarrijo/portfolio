@@ -15,14 +15,13 @@ export const Projects = (): JSX.Element => {
             display: "flex",
             flexDirection: "column",
             rowGap: "$32",
+            columnGap: "$columnGap",
             "@sm": {
               flexDirection: "row",
               flexWrap: "wrap",
               justifyContent: "center",
-              columnGap: "$$columnGap",
-              $$columnGap: "$space$16",
               "& > li": {
-                width: "calc(50% - $$columnGap / 2)",
+                width: "calc(50% - $columnGap / 2)",
               },
             },
             "@md": {

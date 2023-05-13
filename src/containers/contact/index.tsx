@@ -107,15 +107,10 @@ export const Contact = (): JSX.Element => {
                 },
               }}
             >
-              <TextInput id="name" label="Nome" startIcon="person" />
-              <TextInput
-                id="email"
-                label="E-mail"
-                type="email"
-                startIcon="mail"
-              />
+              <TextInput id="name" label="Nome" />
+              <TextInput id="email" label="E-mail" type="email" />
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <TextInput id="subject" label="Assunto" startIcon="subject" />
+                <TextInput id="subject" label="Assunto" />
               </Box>
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
                 <TextInput
@@ -127,7 +122,9 @@ export const Contact = (): JSX.Element => {
               </Box>
             </Box>
             <Box css={{ mt: "$8", display: "flex", justifyContent: "end" }}>
-              <Button type="submit">Enviar mensagem</Button>
+              <Button type="submit" startIcon="send">
+                Enviar mensagem
+              </Button>
             </Box>
           </Box>
         </Box>
