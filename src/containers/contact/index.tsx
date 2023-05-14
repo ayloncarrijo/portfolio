@@ -1,17 +1,11 @@
 import { ContactItem } from "@/components/contact-item";
+import { ControlledTextInput } from "@/components/react-hook-form/controlled-text-input";
 import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { globalData } from "@/global-data";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Conversation from "@public/images/conversation.svg";
-import {
-  Box,
-  Button,
-  Container,
-  Text,
-  TextInput,
-  Toast,
-} from "@vista-ui/react";
+import { Box, Button, Container, Text, Toast } from "@vista-ui/react";
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -31,16 +25,26 @@ const validationSchema = yup.object({
   message: yup.string().required(),
 });
 
+const initialValues: FieldValues = {
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+};
+
 export const Contact = (): JSX.Element => {
   const [isSuccessToastOpen, setIsSuccessToastOpen] = React.useState(false);
 
   const [isErrorToastOpen, setIsErrorToastOpen] = React.useState(false);
 
   const {
-    register,
+    control,
+    reset,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    setError,
+    formState: { isSubmitting, isSubmitSuccessful },
   } = useForm<FieldValues>({
+    defaultValues: initialValues,
     resolver: yupResolver(validationSchema),
   });
 
@@ -55,8 +59,15 @@ export const Contact = (): JSX.Element => {
       })
       .catch(() => {
         setIsErrorToastOpen(true);
+        setError("root.serverError", {});
       });
   };
+
+  React.useEffect(() => {
+    if (isSubmitSuccessful) {
+      reset(initialValues);
+    }
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <Section id="contact">
@@ -174,39 +185,27 @@ export const Contact = (): JSX.Element => {
                 },
               }}
             >
-              <TextInput
-                id="name"
-                label="Nome"
-                error={errors.name?.message}
-                disabled={isSubmitting}
-                {...register("name")}
-              />
-              <TextInput
-                id="email"
-                label="E-mail"
+              <ControlledTextInput control={control} name="name" label="Nome" />
+              <ControlledTextInput
+                control={control}
+                name="email"
                 type="email"
-                error={errors.email?.message}
-                disabled={isSubmitting}
-                {...register("email")}
+                label="E-mail"
               />
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <TextInput
-                  id="subject"
+                <ControlledTextInput
+                  control={control}
+                  name="subject"
                   label="Assunto"
-                  error={errors.subject?.message}
-                  disabled={isSubmitting}
-                  {...register("subject")}
                 />
               </Box>
               <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <TextInput
-                  id="message"
+                <ControlledTextInput
+                  control={control}
+                  name="message"
                   label="Mensagem"
                   as="textarea"
                   rows={8}
-                  error={errors.message?.message}
-                  disabled={isSubmitting}
-                  {...register("message")}
                 />
               </Box>
             </Box>
