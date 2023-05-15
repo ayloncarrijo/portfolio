@@ -37,8 +37,14 @@ export const Header = (): JSX.Element => {
 
   const prevScrollY = React.useRef(0);
 
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+
+  const closeDrawer = (): void => {
+    setIsDrawerOpen(false);
+  };
+
   React.useEffect(() => {
-    const hideOrShowHeader = (): void => {
+    const updateHeaderState = (): void => {
       const isOnTop = window.scrollY <= 32;
 
       setIsCollapsed(!isOnTop && window.scrollY > prevScrollY.current);
@@ -47,12 +53,12 @@ export const Header = (): JSX.Element => {
       prevScrollY.current = window.scrollY;
     };
 
-    hideOrShowHeader();
+    updateHeaderState();
 
-    window.addEventListener("scroll", hideOrShowHeader);
+    window.addEventListener("scroll", updateHeaderState);
 
     return () => {
-      window.removeEventListener("scroll", hideOrShowHeader);
+      window.removeEventListener("scroll", updateHeaderState);
     };
   }, []);
 
@@ -87,7 +93,7 @@ export const Header = (): JSX.Element => {
             },
           }}
         >
-          <Drawer>
+          <Drawer open={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
             <DrawerTrigger asChild>
               <IconButton label="Abrir menu" offset>
                 menu
@@ -99,7 +105,11 @@ export const Header = (): JSX.Element => {
               </DrawerHeader>
               <DrawerBody>
                 {globalData.sections.map((section) => (
-                  <DrawerItem key={section.href} href={section.href}>
+                  <DrawerItem
+                    key={section.href}
+                    href={section.href}
+                    onClick={closeDrawer}
+                  >
                     {section.title}
                   </DrawerItem>
                 ))}
