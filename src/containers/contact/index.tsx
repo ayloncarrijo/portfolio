@@ -11,7 +11,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-type FieldValues = {
+export type ContactFieldValues = {
   name: string;
   email: string;
   subject: string;
@@ -25,7 +25,7 @@ const validationSchema = yup.object({
   message: yup.string().required(),
 });
 
-const initialValues: FieldValues = {
+const initialValues: ContactFieldValues = {
   name: "",
   email: "",
   subject: "",
@@ -43,12 +43,12 @@ export const Contact = (): JSX.Element => {
     handleSubmit,
     setError,
     formState: { isSubmitting, isSubmitSuccessful },
-  } = useForm<FieldValues>({
+  } = useForm<ContactFieldValues>({
     defaultValues: initialValues,
     resolver: yupResolver(validationSchema),
   });
 
-  const submit = async (data: FieldValues): Promise<void> => {
+  const submit = async (data: ContactFieldValues): Promise<void> => {
     setIsSuccessToastOpen(false);
     setIsErrorToastOpen(false);
 
@@ -209,7 +209,7 @@ export const Contact = (): JSX.Element => {
                 />
               </Box>
             </Box>
-            <Box css={{ mt: "$8", display: "flex", justifyContent: "end" }}>
+            <Box css={{ mt: "$16", display: "flex", justifyContent: "end" }}>
               <Button type="submit" startIcon="send" loading={isSubmitting}>
                 Enviar mensagem
               </Button>

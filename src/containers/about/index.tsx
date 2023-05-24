@@ -12,6 +12,18 @@ import {
 } from "@vista-ui/react";
 
 export const About = (): JSX.Element => {
+  const about = (
+    <>
+      Tenho {new Date().getFullYear() - 1999} anos e sou um desenvolvedor
+      front-end e UI designer com 3 anos de experiência no desenvolvimento de
+      interfaces e aplicativos. Possuo habilidades avançadas em HTML, CSS e
+      JavaScript, bem como React e seu ecossistema. Me preocupo sempre em
+      oferecer a melhor experiência ao usuário, utilizando do meu conhecimento
+      em acessibilidade web e técnicas de SEO para garantir que minhas soluções
+      sejam não apenas visualmente atraentes, mas também funcionais e eficazes.
+    </>
+  );
+
   const socialMedia = (
     <>
       <SocialMedia type="linkedin" offset />
@@ -30,14 +42,10 @@ export const About = (): JSX.Element => {
       priority
       css={{
         objectFit: "cover",
-        objectPosition: "0 15%",
         borderRadius: "$full",
       }}
     />
   );
-
-  const description =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac.Lorem ipsum dolor sit amet, consectetur adipiscing elit";
 
   return (
     <Section id="about">
@@ -97,7 +105,7 @@ export const About = (): JSX.Element => {
                 },
               }}
             >
-              <p>{description}</p>
+              <p>{about}</p>
               <Divider css={{ my: "$32", width: "$224" }} />
               <Box css={{ display: "flex", gap: "$24" }}>{socialMedia}</Box>
               <Box
@@ -155,7 +163,7 @@ export const About = (): JSX.Element => {
               backgroundColor: "$surfaceContainer",
             }}
           >
-            {description}
+            {about}
           </Text>
           <Divider css={{ my: "$32" }} />
           <Box css={{ display: "flex", justifyContent: "center", gap: "$24" }}>

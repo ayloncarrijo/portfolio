@@ -33,26 +33,23 @@ export const Skills = (): JSX.Element => {
         >
           <li>
             <Skill icon="code" title="Web Developer">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis velit quas tenetur, deserunt quia inventore porro id
-              odio quod corporis minima itaque ipsa tempore esse dolor labore
-              harum.
+              Apaixonado por UI/UX, me preocupo sempre em oferecer a melhor
+              experiência ao usuário. Tenho 3 anos de experiência em HTML, CSS e
+              JS, assim como React e NextJS.
             </Skill>
           </li>
           <li>
             <Skill icon="dvr" title="Software Developer">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis velit quas tenetur, deserunt quia inventore porro id
-              odio quod corporis minima itaque ipsa tempore esse dolor labore
-              harum.
+              Tenho experiência com os paradigmas de programação funcional e
+              orientado a objetos. As linguagens que mais domino e utilizo são
+              Java, JavaScript e TypeScript.
             </Skill>
           </li>
           <li>
             <Skill icon="palette" title="Designer">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis velit quas tenetur, deserunt quia inventore porro id
-              odio quod corporis minima itaque ipsa tempore esse dolor labore
-              harum.
+              Valorizo estruturas de conteúdo simples e designs minimalistas.
+              Atualmente sigo e utilizo o design system Material You, usando do
+              Figma para prototipagem de telas.
             </Skill>
           </li>
         </Box>

@@ -7,13 +7,15 @@ import {
   Text,
   forwardRef,
 } from "@vista-ui/react";
+import Link from "next/link";
 
 export type ProjectProps = React.ComponentProps<typeof Project>;
 
 export type ProjectRootProps = {
   title: string;
-  description: string;
+  description: React.ReactNode;
   tags: Array<string>;
+  image: string;
   repository?: string;
   url?: string;
   direction?: "start" | "end";
@@ -21,33 +23,47 @@ export type ProjectRootProps = {
 
 export const Project = forwardRef<ProjectRootProps, "div">(
   (
-    { title, description, tags, repository, url, direction = "end", ...props },
+    {
+      title,
+      description,
+      tags,
+      image,
+      repository,
+      url,
+      direction = "end",
+      ...props
+    },
     ref
   ) => {
-    const hasRepository = Boolean(repository);
-
-    const hasUrl = Boolean(url);
-
     const imageJsx = (
       <AspectRatio ratio={16 / 9}>
-        <Image
-          alt="Projeto"
-          src="/images/projects/example.jpg"
-          fill
-          css={{
-            objectFit: "cover",
-            borderRadius: "$lg",
-          }}
-        />
         <Box
           css={{
-            position: "absolute",
-            inset: 0,
-            backgroundColor: "$primary",
-            opacity: 0.3,
+            width: "100%",
+            height: "100%",
+            position: "relative",
             borderRadius: "$lg",
+            overflow: "hidden",
           }}
-        />
+        >
+          <Image
+            alt={title}
+            src={image}
+            fill
+            css={{
+              objectFit: "cover",
+            }}
+          />
+          <Box
+            css={{
+              position: "absolute",
+              inset: 0,
+              backgroundColor: "$primary",
+              opacity: 0.05,
+              pointerEvents: "none",
+            }}
+          />
+        </Box>
       </AspectRatio>
     );
 
@@ -57,16 +73,16 @@ export const Project = forwardRef<ProjectRootProps, "div">(
       </Text>
     );
 
-    const iconsJsx = (hasRepository || hasUrl) && (
+    const iconsJsx = (
       <Box
         css={{
           display: "flex",
           gap: "$24",
         }}
       >
-        {hasUrl && (
+        {url != null ? (
           <IconButton
-            as="a"
+            as={Link}
             label="Abrir projeto"
             href={url}
             target="_blank"
@@ -74,15 +90,23 @@ export const Project = forwardRef<ProjectRootProps, "div">(
           >
             open_in_new
           </IconButton>
+        ) : (
+          <IconButton label="Abrir projeto" offset disabled>
+            open_in_new_off
+          </IconButton>
         )}
-        {hasRepository && (
+        {repository != null ? (
           <IconButton
-            as="a"
+            as={Link}
             label="Abrir repositório"
             href={repository}
             target="_blank"
             offset
           >
+            <Github />
+          </IconButton>
+        ) : (
+          <IconButton label="Abrir repositório" offset disabled>
             <Github />
           </IconButton>
         )}
@@ -94,6 +118,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
         as="ul"
         css={{
           display: "flex",
+          justifyContent: "center",
           gap: "$16",
           flexWrap: "wrap",
           typography: "$bodySm",

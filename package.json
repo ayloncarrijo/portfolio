@@ -23,7 +23,7 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
     "@vista-ui/core": "1.0.0-alpha.5",
-    "@vista-ui/react": "1.0.0-alpha.13",
+    "@vista-ui/react": "1.0.0-alpha.14",
     "axios": "^1.4.0",
     "next": "13.3.1",
     "next-themes": "^0.2.1",

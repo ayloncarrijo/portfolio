@@ -37,7 +37,7 @@ export const Projects = (): JSX.Element => {
             <li key={project.title}>
               <Project
                 {...project}
-                direction={index % 2 === 0 ? "end" : "start"}
+                direction={index % 2 === 0 ? "start" : "end"}
               />
             </li>
           ))}
