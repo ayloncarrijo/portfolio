@@ -82,7 +82,7 @@ export const Header = (): JSX.Element => {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          py: "$16",
+          height: "$56",
         }}
       >
         <Logo />
