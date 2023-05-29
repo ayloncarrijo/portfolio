@@ -52,15 +52,16 @@ export const Project = forwardRef<ProjectRootProps, "div">(
             fill
             css={{
               objectFit: "cover",
+              objectPosition: "top",
             }}
+            priority
           />
           <Box
             css={{
               position: "absolute",
               inset: 0,
-              backgroundColor: "$primary",
-              opacity: 0.05,
               pointerEvents: "none",
+              backgroundColor: "$disabledContainer",
             }}
           />
         </Box>

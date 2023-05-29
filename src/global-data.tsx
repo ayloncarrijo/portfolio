@@ -68,32 +68,25 @@ export const globalData = {
           macronutrientes você ingeriu no dia e se sua meta foi alcançada.
         </>
       ),
-      tags: ["TypeScript", "React", "Tailwind", "Node", "Prisma"],
+      tags: ["TypeScript", "React", "NextJS", "Tailwind", "Node", "Prisma"],
       image: "/images/projects/nutry.jpg",
       repository: "https://github.com/ayloncarrijo/nutry",
       url: "https://diet-virid.vercel.app",
     },
     {
-      title: "Portfólio",
+      title: "Comm Cred",
       description: (
         <>
-          O meu portfólio foi construído e desenhado seguindo o design system
-          Material You, utilizando da biblioteca Vista UI. A página conta com a
-          última versão do NextJS, se aproveitando ao máximo dos benefícios de
-          SSR, além de uma simples API para envio de e-mails.
+          O site da Comm Cred é uma landing page eficaz e otimizada desenvolvida
+          utilizando NextJS, se aproveitando ao máximo dos benefícios de SSR. A
+          página apresenta a empresa de maneira clara e atraente, além de
+          oferecer aos usuários um aplicativo de simulação do saque-aniversário,
+          ajudando-os a planejar suas finanças.
         </>
       ),
-      tags: [
-        "TypeScript",
-        "React",
-        "NextJS",
-        "Vista UI",
-        "Stitches",
-        "Material You",
-      ],
-      image: "/images/projects/portfolio.jpg",
-      repository: "https://github.com/ayloncarrijo/portfolio",
-      url: "/",
+      tags: ["TypeScript", "React", "NextJS", "Tailwind"],
+      image: "/images/projects/commcred.jpg",
+      url: "https://www.commcreddigital.com.br",
     },
   ],
 };
