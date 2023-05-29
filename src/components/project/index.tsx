@@ -49,12 +49,13 @@ export const Project = forwardRef<ProjectRootProps, "div">(
           <Image
             alt={title}
             src={image}
+            priority
             fill
+            sizes="100vw, (min-width: 720px) 50vw"
             css={{
               objectFit: "cover",
               objectPosition: "top",
             }}
-            priority
           />
           <Box
             css={{

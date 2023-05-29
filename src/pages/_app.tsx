@@ -64,8 +64,8 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
       <ThemeProvider
         attribute="class"
         value={{
-          light: lightTheme,
-          dark: darkTheme,
+          light: lightTheme.className,
+          dark: darkTheme.className,
         }}
       >
         <Component {...pageProps} />
