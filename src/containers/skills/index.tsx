@@ -35,7 +35,7 @@ export const Skills = (): JSX.Element => {
             <Skill icon="code" title="Web Developer">
               Apaixonado por UI/UX, me preocupo sempre em oferecer a melhor
               experiência ao usuário. Tenho 3 anos de experiência em HTML, CSS e
-              JS, assim como React e NextJS.
+              JS, assim como React e Next.js.
             </Skill>
           </li>
           <li>

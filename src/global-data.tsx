@@ -68,7 +68,7 @@ export const globalData = {
           macronutrientes você ingeriu no dia e se sua meta foi alcançada.
         </>
       ),
-      tags: ["TypeScript", "React", "NextJS", "Tailwind", "Node", "Prisma"],
+      tags: ["TypeScript", "React", "Next.js", "Tailwind", "Node", "Prisma"],
       image: "/images/projects/nutry.jpg",
       repository: "https://github.com/ayloncarrijo/nutry",
       url: "https://diet-virid.vercel.app",
@@ -78,13 +78,13 @@ export const globalData = {
       description: (
         <>
           O site da Comm Cred é uma landing page eficaz e otimizada desenvolvida
-          utilizando NextJS, se aproveitando ao máximo dos benefícios de SSR. A
+          utilizando Next.js, se aproveitando ao máximo dos benefícios de SSR. A
           página apresenta a empresa de maneira clara e atraente, além de
           oferecer aos usuários um aplicativo de simulação do saque-aniversário,
           ajudando-os a planejar suas finanças.
         </>
       ),
-      tags: ["TypeScript", "React", "NextJS", "Tailwind"],
+      tags: ["TypeScript", "React", "Next.js", "Tailwind"],
       image: "/images/projects/commcred.jpg",
       url: "https://www.commcreddigital.com.br",
     },
