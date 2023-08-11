@@ -178,11 +178,7 @@ export const Contact = (): JSX.Element => {
             <Box
               css={{
                 display: "grid",
-                columnGap: "$16",
                 rowGap: "$8",
-                "@md": {
-                  gridTemplateColumns: "1fr 1fr",
-                },
               }}
             >
               <ControlledTextInput control={control} name="name" label="Nome" />
@@ -192,22 +188,18 @@ export const Contact = (): JSX.Element => {
                 type="email"
                 label="E-mail"
               />
-              <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <ControlledTextInput
-                  control={control}
-                  name="subject"
-                  label="Assunto"
-                />
-              </Box>
-              <Box css={{ "@md": { gridColumn: "span 2" } }}>
-                <ControlledTextInput
-                  control={control}
-                  name="message"
-                  label="Mensagem"
-                  as="textarea"
-                  rows={8}
-                />
-              </Box>
+              <ControlledTextInput
+                control={control}
+                name="subject"
+                label="Assunto"
+              />
+              <ControlledTextInput
+                control={control}
+                name="message"
+                label="Mensagem"
+                as="textarea"
+                rows={8}
+              />
             </Box>
             <Box css={{ mt: "$16", display: "flex", justifyContent: "end" }}>
               <Button type="submit" startIcon="send" loading={isSubmitting}>

@@ -5,9 +5,7 @@ import type {
   PolymorphicPropsWithRef,
   TextInputRootProps,
 } from "@vista-ui/react";
-
 import { TextInput, assignRef } from "@vista-ui/react";
-
 import React from "react";
 import {
   Controller,
