@@ -1,3 +1,4 @@
+import { LanguageSelector } from "@/components/language-selector";
 import { SocialMedia } from "@/components/social-media";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { globalData } from "@/global-data";
@@ -15,6 +16,7 @@ import {
   DrawerTrigger,
   IconButton,
 } from "@vista-ui/react";
+import { useTranslation } from "next-i18next";
 import React from "react";
 
 const StyledLink = styled("a", {
@@ -31,6 +33,8 @@ const StyledLink = styled("a", {
 });
 
 export const Header = (): JSX.Element => {
+  const { t: translate } = useTranslation("home");
+
   const [isCollapsed, setIsCollapsed] = React.useState(false);
 
   const [isOnTop, setIsOnTop] = React.useState(true);
@@ -110,13 +114,14 @@ export const Header = (): JSX.Element => {
                     href={section.href}
                     onClick={closeDrawer}
                   >
-                    {section.title}
+                    {translate(section.i18nKey)}
                   </DrawerItem>
                 ))}
               </DrawerBody>
               <DrawerFooter
                 css={{ display: "flex", justifyContent: "center", gap: "$8 " }}
               >
+                <LanguageSelector variant="outlined" />
                 <ThemeSwitcher variant="outlined" />
                 <SocialMedia variant="outlined" type="github" />
               </DrawerFooter>
@@ -137,7 +142,9 @@ export const Header = (): JSX.Element => {
             <Box as="ul" css={{ display: "flex", gap: "$32" }}>
               {globalData.sections.map((section) => (
                 <li key={section.href}>
-                  <StyledLink href={section.href}>{section.title}</StyledLink>
+                  <StyledLink href={section.href}>
+                    {translate(section.i18nKey)}
+                  </StyledLink>
                 </li>
               ))}
             </Box>
@@ -149,6 +156,7 @@ export const Header = (): JSX.Element => {
               backgroundColor: "$outlineVariant",
             }}
           />
+          <LanguageSelector offset />
           <ThemeSwitcher offset />
           <SocialMedia type="github" offset />
         </Box>

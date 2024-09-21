@@ -2,12 +2,15 @@ import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { Skill } from "@/components/skill";
 import { Box, Container } from "@vista-ui/react";
+import { Trans, useTranslation } from "next-i18next";
 
 export const Skills = (): JSX.Element => {
+  const { t: translate } = useTranslation("home");
+
   return (
     <Section id="skills">
       <Container>
-        <SectionTitle>Habilidades</SectionTitle>
+        <SectionTitle>{translate("section.skills")}</SectionTitle>
         <Box
           as="ul"
           css={{
@@ -32,24 +35,21 @@ export const Skills = (): JSX.Element => {
           }}
         >
           <li>
-            <Skill icon="code" title="Web Developer">
-              Apaixonado por UI/UX, me preocupo sempre em oferecer a melhor
-              experiência ao usuário. Tenho 3 anos de experiência em HTML, CSS e
-              JS, assim como React e Next.js.
+            <Skill icon="code" title={translate("skills.webDeveloper.title")}>
+              <Trans ns="home" i18nKey="skills.webDeveloper.description" />
             </Skill>
           </li>
           <li>
-            <Skill icon="dvr" title="Software Developer">
-              Tenho experiência com os paradigmas de programação funcional e
-              orientado a objetos. As linguagens que mais domino e utilizo são
-              Java, JavaScript e TypeScript.
+            <Skill
+              icon="dvr"
+              title={translate("skills.softwareDeveloper.title")}
+            >
+              {translate("skills.softwareDeveloper.description")}
             </Skill>
           </li>
           <li>
-            <Skill icon="palette" title="Designer">
-              Valorizo estruturas de conteúdo simples e designs minimalistas.
-              Atualmente sigo e utilizo o design system Material You, usando do
-              Figma para prototipagem de telas.
+            <Skill icon="palette" title={translate("skills.designer.title")}>
+              {translate("skills.designer.description")}
             </Skill>
           </li>
         </Box>

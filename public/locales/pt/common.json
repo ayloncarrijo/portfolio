@@ -1,0 +1,13 @@
+{
+  "yup": {
+    "required": "Este campo é obrigatório.",
+    "email": "Insira um endereço de e-mail válido."
+  },
+  "portfolio": "Portfólio",
+  "openMedia": "Abrir meu {{media}}",
+  "openProject": "Abrir projeto",
+  "openRepository": "Abrir repositório",
+  "enableDarkMode": "Ativar modo escuro",
+  "enableLightMode": "Ativar modo claro",
+  "selectLanguage": "Selecionar idioma"
+}

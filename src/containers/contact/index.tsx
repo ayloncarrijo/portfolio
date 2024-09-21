@@ -3,29 +3,24 @@ import { ControlledTextInput } from "@/components/react-hook-form/controlled-tex
 import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { globalData } from "@/global-data";
+import { applyYupLocale } from "@/utils/yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Conversation from "@public/images/conversation.svg";
 import { Box, Button, Container, Text, Toast } from "@vista-ui/react";
 import axios from "axios";
+import { useTranslation } from "next-i18next";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
-export type ContactFieldValues = {
+export type ContactFormulary = {
   name: string;
   email: string;
   subject: string;
   message: string;
 };
 
-const validationSchema = yup.object({
-  name: yup.string().required(),
-  email: yup.string().required().email(),
-  subject: yup.string().required(),
-  message: yup.string().required(),
-});
-
-const initialValues: ContactFieldValues = {
+const initialValues: ContactFormulary = {
   name: "",
   email: "",
   subject: "",
@@ -33,6 +28,13 @@ const initialValues: ContactFieldValues = {
 };
 
 export const Contact = (): JSX.Element => {
+  const { t: translate } = useTranslation();
+
+  const { t: translateHome } = useTranslation("home");
+
+  const [validationSchema, setValidationSchema] =
+    React.useState<yup.ObjectSchema<ContactFormulary>>();
+
   const [isSuccessToastOpen, setIsSuccessToastOpen] = React.useState(false);
 
   const [isErrorToastOpen, setIsErrorToastOpen] = React.useState(false);
@@ -43,12 +45,14 @@ export const Contact = (): JSX.Element => {
     handleSubmit,
     setError,
     formState: { isSubmitting, isSubmitSuccessful },
-  } = useForm<ContactFieldValues>({
+    clearErrors,
+  } = useForm<ContactFormulary>({
     defaultValues: initialValues,
-    resolver: yupResolver(validationSchema),
+    resolver:
+      validationSchema != null ? yupResolver(validationSchema) : undefined,
   });
 
-  const submit = async (data: ContactFieldValues): Promise<void> => {
+  const submit = async (data: ContactFormulary): Promise<void> => {
     setIsSuccessToastOpen(false);
     setIsErrorToastOpen(false);
 
@@ -69,21 +73,34 @@ export const Contact = (): JSX.Element => {
     }
   }, [isSubmitSuccessful, reset]);
 
+  React.useEffect(() => {
+    applyYupLocale(translate);
+    setValidationSchema(
+      yup.object({
+        name: yup.string().required(),
+        email: yup.string().required().email(),
+        subject: yup.string().required(),
+        message: yup.string().required(),
+      })
+    );
+    clearErrors();
+  }, [translate, clearErrors]);
+
   return (
     <Section id="contact">
       <Toast
         open={isSuccessToastOpen}
         onOpenChange={setIsSuccessToastOpen}
-        message="A sua mensagem foi enviada com sucesso!"
+        message={translateHome("contact.messageSendSuccess")}
       />
       <Toast
         open={isErrorToastOpen}
         onOpenChange={setIsErrorToastOpen}
-        message="Algo deu errado. Por favor, tente novamente."
+        message={translateHome("contact.messageSendError")}
       />
 
       <Container>
-        <SectionTitle>Contato</SectionTitle>
+        <SectionTitle>{translateHome("section.contact")}</SectionTitle>
         <Box
           css={{
             display: "flex",
@@ -108,12 +125,12 @@ export const Contact = (): JSX.Element => {
                   "@initial": "titleLg",
                   "@md": "headlineMd",
                 }}
-                css={{ mb: "$8" }}
+                css={{ mb: "$8", whiteSpace: "pre-line" }}
               >
-                Vamos conversar <br /> Me envie uma mensagem!
+                {translateHome("contact.title")}
               </Text>
               <Text css={{ mb: "$32", color: "$onSurfaceVariant" }}>
-                Podemos criar algo juntos 🤟
+                {translateHome("contact.description")}
               </Text>
               <Box css={{ display: "grid", gap: "$16" }}>
                 <ContactItem
@@ -125,13 +142,12 @@ export const Contact = (): JSX.Element => {
                 </ContactItem>
                 <ContactItem
                   icon="phone"
-                  title="Celular"
-                  href={`tel:+55${globalData.phone}`}
+                  title={translateHome("contact.phone")}
+                  href={`tel:${globalData.phone}`}
                 >
-                  {`(${globalData.phone.slice(0, 2)}) ${globalData.phone.slice(
-                    2,
-                    7
-                  )}-${globalData.phone.slice(7)}`}
+                  +{globalData.phone.slice(0, 2)} (
+                  {globalData.phone.slice(2, 4)}) {globalData.phone.slice(4, 9)}
+                  -{globalData.phone.slice(9)}
                 </ContactItem>
               </Box>
             </div>
@@ -181,7 +197,11 @@ export const Contact = (): JSX.Element => {
                 rowGap: "$8",
               }}
             >
-              <ControlledTextInput control={control} name="name" label="Nome" />
+              <ControlledTextInput
+                control={control}
+                name="name"
+                label={translateHome("contact.name")}
+              />
               <ControlledTextInput
                 control={control}
                 name="email"
@@ -191,19 +211,19 @@ export const Contact = (): JSX.Element => {
               <ControlledTextInput
                 control={control}
                 name="subject"
-                label="Assunto"
+                label={translateHome("contact.subject")}
               />
               <ControlledTextInput
                 control={control}
                 name="message"
-                label="Mensagem"
+                label={translateHome("contact.message")}
                 as="textarea"
                 rows={8}
               />
             </Box>
             <Box css={{ mt: "$16", display: "flex", justifyContent: "end" }}>
               <Button type="submit" startIcon="send" loading={isSubmitting}>
-                Enviar mensagem
+                {translateHome("contact.submit")}
               </Button>
             </Box>
           </Box>

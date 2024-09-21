@@ -3,12 +3,15 @@ import { Section } from "@/components/section";
 import { SectionTitle } from "@/components/section/section-title";
 import { globalData } from "@/global-data";
 import { Box, Container } from "@vista-ui/react";
+import { useTranslation } from "next-i18next";
 
 export const Projects = (): JSX.Element => {
+  const { t: translate } = useTranslation("home");
+
   return (
     <Section id="projects">
       <Container>
-        <SectionTitle>Projetos</SectionTitle>
+        <SectionTitle>{translate("section.projects")}</SectionTitle>
         <Box
           as="ul"
           css={{

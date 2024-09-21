@@ -1,4 +1,4 @@
-import type { ContactFieldValues } from "@/containers/contact";
+import type { ContactFormulary } from "@/containers/contact";
 import { globalData } from "@/global-data";
 import type { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from "nodemailer";
@@ -15,7 +15,7 @@ export default async function handler(
     return res.status(500).end();
   }
 
-  const { name, email, subject, message } = req.body as ContactFieldValues;
+  const { name, email, subject, message } = req.body as ContactFormulary;
 
   const transporter = nodemailer.createTransport({
     service: "hotmail",

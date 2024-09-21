@@ -7,13 +7,14 @@ import {
   Text,
   forwardRef,
 } from "@vista-ui/react";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
 export type ProjectProps = React.ComponentProps<typeof Project>;
 
 export type ProjectRootProps = {
   title: string;
-  description: React.ReactNode;
+  i18nKey: string;
   tags: Array<string>;
   image: string;
   repository?: string;
@@ -25,7 +26,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
   (
     {
       title,
-      description,
+      i18nKey,
       tags,
       image,
       repository,
@@ -35,6 +36,10 @@ export const Project = forwardRef<ProjectRootProps, "div">(
     },
     ref
   ) => {
+    const { t: translate } = useTranslation("home");
+
+    const { t: translateCommon } = useTranslation();
+
     const imageJsx = (
       <AspectRatio ratio={16 / 9}>
         <Box
@@ -85,7 +90,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
         {url != null ? (
           <IconButton
             as={Link}
-            label="Abrir projeto"
+            label={translateCommon("openProject")}
             href={url}
             target="_blank"
             offset
@@ -93,14 +98,14 @@ export const Project = forwardRef<ProjectRootProps, "div">(
             open_in_new
           </IconButton>
         ) : (
-          <IconButton label="Abrir projeto" offset disabled>
+          <IconButton label={translateCommon("openProject")} offset disabled>
             open_in_new_off
           </IconButton>
         )}
         {repository != null ? (
           <IconButton
             as={Link}
-            label="Abrir repositório"
+            label={translateCommon("openRepository")}
             href={repository}
             target="_blank"
             offset
@@ -108,7 +113,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
             <Github />
           </IconButton>
         ) : (
-          <IconButton label="Abrir repositório" offset disabled>
+          <IconButton label={translateCommon("openRepository")} offset disabled>
             <Github />
           </IconButton>
         )}
@@ -145,7 +150,7 @@ export const Project = forwardRef<ProjectRootProps, "div">(
           },
         }}
       >
-        {description}
+        {translate(`${i18nKey}.description`)}
       </Text>
     );
 

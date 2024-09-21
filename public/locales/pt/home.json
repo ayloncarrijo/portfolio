@@ -1,0 +1,52 @@
+{
+  "banner": {
+    "greeting": "Olá! 👋\nMe chamo <0>Aylon Carrijo</0>",
+    "description": "Sou um <0>desenvolvedor full-stack</0> comprometido e apaixonado, sempre em busca de aprimorar minhas habilidades e entregar soluções de qualidade."
+  },
+  "about": {
+    "description": "Sou um desenvolvedor full-stack com {{yearsOfExperience}} anos de experiência, dedicado a criar soluções inovadoras e eficientes. Desde o início da minha jornada em {{startYear}}, venho construindo aplicações web e mobile robustas. Tenho domínio avançado em HTML, CSS e JavaScript, além de sólida experiência com React e seu ecossistema. No back-end, sou especializado na criação de APIs com Java, Spring Boot e NestJS. Meu foco é sempre entregar a melhor experiência ao usuário, aplicando princípios de acessibilidade e SEO para garantir que as soluções sejam visualmente atraentes, funcionais e eficazes."
+  },
+  "skills": {
+    "webDeveloper": {
+      "title": "Web Developer",
+      "description": "Apaixonado por UI/UX, estou sempre comprometido em proporcionar a melhor experiência ao usuário. Tenho pleno domínio em HTML, CSS e JavaScript, além de expertise em React, Next.js e seu ecossistema."
+    },
+    "softwareDeveloper": {
+      "title": "Software Developer",
+      "description": "Tenho sólida experiência com os paradigmas de programação funcional e orientada a objetos. As linguagens que mais domino e utilizo são Java, JavaScript e TypeScript."
+    },
+    "designer": {
+      "title": "Designer",
+      "description": "Valorizo estruturas de conteúdo simples e designs minimalistas. Atualmente, sigo e aplico o design system Material You, utilizando o Figma para prototipação de telas."
+    }
+  },
+  "projects": {
+    "vistaUi": {
+      "description": "Vista UI é uma biblioteca de componentes que implementa a mais nova versão do design system da Google: Material You. A sua base é construída a partir de bibliotecas como Stitches e Radix, garantindo que seus componentes sejam customizáveis e acessíveis."
+    },
+    "nutry": {
+      "description": "Nutry é um aplicativo de dieta feito para se calcular os macronutrientes necessários para uma pessoa, se baseando em seu peso e objetivo. Através do cadastro de alimentos, o aplicativo calcula o quanto de macronutrientes você ingeriu no dia e se sua meta foi alcançada."
+    },
+    "commCred": {
+      "description": "Uma landing page otimizada desenvolvida utilizando Next.js, se aproveitando ao máximo dos benefícios de SSR. A página apresenta a empresa de maneira clara e atraente, além de oferecer aos usuários um aplicativo de simulação do saque-aniversário, ajudando-os a planejar suas finanças."
+    }
+  },
+  "contact": {
+    "title": "Vamos conversar\nMe envie uma mensagem!",
+    "description": "Podemos criar algo juntos 🤟",
+    "phone": "Celular",
+    "name": "Nome",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "submit": "Enviar mensagem",
+    "messageSendSuccess": "A sua mensagem foi enviada com sucesso!",
+    "messageSendError": "Algo deu errado. Por favor, tente novamente."
+  },
+  "section": {
+    "home": "Início",
+    "about": "Sobre mim",
+    "skills": "Habilidades",
+    "projects": "Projetos",
+    "contact": "Contato"
+  }
+}

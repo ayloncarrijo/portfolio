@@ -9,7 +9,16 @@ export type SkillRootProps = {
 
 export const Skill = forwardRef<SkillRootProps, "div">(
   ({ icon, title, children, ...props }, ref) => (
-    <Box ref={ref} css={{ textAlign: "center" }} {...props}>
+    <Box
+      ref={ref}
+      css={{
+        textAlign: "center",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+      {...props}
+    >
       <Box
         css={{
           position: "relative",
@@ -46,6 +55,7 @@ export const Skill = forwardRef<SkillRootProps, "div">(
       </Box>
       <Box
         css={{
+          flex: 1,
           p: "$16",
           backgroundColor: "$surfaceContainer",
           borderRadius: "0 0 $lg $lg",

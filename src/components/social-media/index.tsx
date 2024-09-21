@@ -6,6 +6,7 @@ import {
   forwardRef,
   type IconButtonRootProps,
 } from "@vista-ui/react";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
 export type SocialMediaProps = React.ComponentProps<typeof SocialMedia>;
@@ -19,11 +20,13 @@ export const SocialMedia = forwardRef<SocialMediaRootProps, typeof Link>(
   ({ as = Link, type, ...props }, ref) => {
     const { icon, href, label } = globalData.socialMedia[type];
 
+    const { t: translate } = useTranslation();
+
     return (
       <IconButton
         ref={ref}
         as={as}
-        label={`Abrir meu ${label}`}
+        label={translate("openMedia", { media: label })}
         href={href}
         target="_blank"
         {...props}

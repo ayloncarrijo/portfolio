@@ -1,0 +1,13 @@
+{
+  "yup": {
+    "required": "This field is required.",
+    "email": "Enter a valid e-mail address."
+  },
+  "portfolio": "Portfolio",
+  "openMedia": "Open my {{media}}",
+  "openProject": "Open project",
+  "openRepository": "Open repository",
+  "enableDarkMode": "Enable dark mode",
+  "enableLightMode": "Enable light mode",
+  "selectLanguage": "Select language"
+}

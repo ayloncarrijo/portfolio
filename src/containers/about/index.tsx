@@ -10,18 +10,20 @@ import {
   Grid,
   Text,
 } from "@vista-ui/react";
+import { Trans, useTranslation } from "next-i18next";
 
 export const About = (): JSX.Element => {
+  const { t: translate } = useTranslation("home");
+
   const about = (
-    <>
-      Tenho {new Date().getFullYear() - 1999} anos e sou um desenvolvedor
-      front-end e UI designer com 3 anos de experiência no desenvolvimento de
-      interfaces e aplicativos. Possuo habilidades avançadas em HTML, CSS e
-      JavaScript, bem como React e seu ecossistema. Me preocupo sempre em
-      oferecer a melhor experiência ao usuário, utilizando do meu conhecimento
-      em acessibilidade web e técnicas de SEO para garantir que minhas soluções
-      sejam não apenas visualmente atraentes, mas também funcionais e eficazes.
-    </>
+    <Trans
+      ns="home"
+      i18nKey="about.description"
+      values={{
+        yearsOfExperience: new Date().getFullYear() - 2020,
+        startYear: 2020,
+      }}
+    />
   );
 
   const socialMedia = (
@@ -50,7 +52,7 @@ export const About = (): JSX.Element => {
   return (
     <Section id="about">
       <Container>
-        <SectionTitle>Sobre mim</SectionTitle>
+        <SectionTitle>{translate("section.about")}</SectionTitle>
         <Box
           css={{
             display: "none",
@@ -105,7 +107,9 @@ export const About = (): JSX.Element => {
                 },
               }}
             >
-              <p>{about}</p>
+              <Box as="p" css={{ pr: "$4" }}>
+                {about}
+              </Box>
               <Divider css={{ my: "$32", width: "$224" }} />
               <Box css={{ display: "flex", gap: "$24" }}>{socialMedia}</Box>
               <Box

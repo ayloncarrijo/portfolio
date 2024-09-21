@@ -4,19 +4,10 @@ import {
   injectBaseStyles,
 } from "@vista-ui/core";
 import { GlobalProvider } from "@vista-ui/react";
+import { appWithTranslation } from "next-i18next";
 import { ThemeProvider } from "next-themes";
 import type { AppProps } from "next/app";
 import localFont from "next/font/local";
-import * as yup from "yup";
-
-yup.setLocale({
-  mixed: {
-    required: "Este campo é obrigatório.",
-  },
-  string: {
-    email: "O e-mail digitado é inválido.",
-  },
-});
 
 const materialSymbols = localFont({
   src: "../../public/fonts/Material-Symbols.woff2",
@@ -56,7 +47,7 @@ const darkTheme = createTheme({
   colors: colorSchemes.dark,
 });
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+function App({ Component, pageProps }: AppProps): JSX.Element {
   injectBaseStyles();
 
   return (
@@ -73,3 +64,5 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
     </GlobalProvider>
   );
 }
+
+export default appWithTranslation(App);

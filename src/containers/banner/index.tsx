@@ -9,8 +9,11 @@ import {
   Grid,
   Text,
 } from "@vista-ui/react";
+import { Trans, useTranslation } from "next-i18next";
 
 export const Banner = (): JSX.Element => {
+  const { t: translate } = useTranslation("home");
+
   return (
     <Section>
       <Container>
@@ -26,30 +29,30 @@ export const Banner = (): JSX.Element => {
               },
             }}
           >
-            <Title css={{ mb: "$8" }}>
-              Olá! 👋 <br />
-              Me chamo{" "}
-              <Box as="span" css={{ color: "$primary" }}>
-                Aylon Carrijo
-              </Box>
+            <Title css={{ mb: "$8", whiteSpace: "pre-line" }}>
+              <Trans
+                ns="home"
+                i18nKey="banner.greeting"
+                components={[
+                  <Box key={0} as="span" css={{ color: "$primary" }} />,
+                ]}
+              />
             </Title>
             <Text css={{ color: "$onSurfaceVariant", mb: "$32" }}>
-              Sou um{" "}
-              <Box as="span" css={{ color: "$primary" }}>
-                desenvolvedor front-end
-              </Box>{" "}
-              e{" "}
-              <Box as="span" css={{ color: "$primary" }}>
-                UI designer
-              </Box>{" "}
-              muito dedicado e apaixonado pela minha profissão.
+              <Trans
+                ns="home"
+                i18nKey="banner.description"
+                components={[
+                  <Box key={0} as="span" css={{ color: "$primary" }} />,
+                ]}
+              />
             </Text>
             <Box css={{ display: "flex", gap: "$8" }}>
               <Button as="a" href="#projects">
-                Projetos
+                {translate("section.projects")}
               </Button>
               <Button as="a" href="#contact" variant="outlined">
-                Contato
+                {translate("section.contact")}
               </Button>
             </Box>
           </Box>
